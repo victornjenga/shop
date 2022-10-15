@@ -6,12 +6,35 @@ import {
   AiFillStar,
   AiOutlineStar,
 } from "react-icons/ai";
+import Link from "next/link";
 import { Products } from "../../components/Products";
 import { useStateContext } from "../../context/StateContext";
+import Router from "next/router";
+import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
 
-const ProductDetails = ( { product, products }) => {
-  const {  incQty, decQty, qty, onAdd, setShowCart } = useStateContext();
-// console.log(products)
+const OrderButtonWrapper = ({ product, products }) => {
+  // const { price } = product;
+  console.log(products);
+  return (
+    <PayPalButtons
+      className="w-[70%] z-0 md:w-[40%]"
+      createOrder={(data, actions) => {
+        return actions.order.create({
+          purchase_units: [
+            {
+              amount: {
+                value: "100",
+              },
+            },
+          ],
+        });
+      }}
+    />
+  );
+};
+const ProductDetails = ({ product, products }) => {
+  const { incQty, decQty, qty, onAdd, setShowCart } = useStateContext();
+  // console.log(products)
   const { image, name, details, price } = product;
 
   return (
@@ -50,28 +73,33 @@ const ProductDetails = ( { product, products }) => {
                 </span>
                 <span className="text-2xl font-semibold">{qty}</span>
                 <span
-                   onClick={ incQty}
+                  onClick={incQty}
                   className="bg-green-500 p-3 cursor-pointer text-xl font-bold"
                 >
                   <AiOutlinePlus />
                 </span>
               </p>
             </div>
-            <div className="flex space-x-7 mt-4">
+            <div className="flex flex-col mt-4 space-y-4 items-center justify-center">
               <button
                 type="button"
                 onClick={() => onAdd(product, qty)}
-
                 className="px-3 py-2  border-solid border-red-600 border rounded-2xl cursor-pointer  hover:scale-105 duration-300"
               >
                 Add to Cart
               </button>
-              <button
-                type="button"
-                className="bg-red-500 px-3 py-2 text-white rounded-2xl hover:scale-105 duration-300"
-              >
-                Buy Now
-              </button>
+
+              <div>
+                <PayPalScriptProvider
+                  options={{
+                    "client-id": process.env.NEXT_PUBLIC_PAYPAL_CLIENT_ID,
+                    components: "buttons",
+                    "data-namespace": "paypalOrder",
+                  }}
+                >
+                  <OrderButtonWrapper className="w-[500px]  z-0"  />
+                </PayPalScriptProvider>
+              </div>
             </div>
           </div>
         </div>
@@ -121,12 +149,9 @@ export const getStaticProps = async ({ params: { slug } }) => {
   const product = await client.fetch(query);
   const products = await client.fetch(productsQuery);
 
-  
-
   return {
     props: { products, product },
   };
 };
-
 
 export default ProductDetails;

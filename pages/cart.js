@@ -96,13 +96,15 @@ const Cart = () => {
             <h3>Ksh {totalPrice}</h3>
           </div>
           <div className="flex pt-6 items-center justify-center">
-            <button
-              type="button"
-              className="bg-green-500 text-white px-3  py-2 rounded-xl text-2xl font-bold hover:scale-105 duration-300 "
-              onClick=""
-            >
-              Proceed to Checkout
-            </button>
+            <Link href="/pay">
+              <button
+                type="button"
+                className="bg-green-500 text-white px-3  py-2 rounded-xl text-2xl font-bold hover:scale-105 duration-300 "
+                onClick=""
+              >
+                Proceed to Checkout
+              </button>
+            </Link>
           </div>
         </div>
       )}

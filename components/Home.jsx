@@ -1,61 +1,76 @@
-import React from "react";
-import { getSession } from "next-auth/react";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
-// import { useSession, signIn, signOut } from "next-auth/react";
-import contact from "../public/assets/contact.jpg";
+import civrot from "../public/assets/civrot.png";
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Carousel } from "react-responsive-carousel";
-function Home() {
-  // const { data: session } = useSession();
 
+function Home() {
   return (
-    <div className="  w-full pt-20  flex flex-col  ">
-      <h1 className="justify-start text-2xl font-bold pl-[20%] ">
-        Special Offers
-      </h1>
-      <div className="  block md:flex w-full  md:space-x-10 items-center justify-center ">
-        <Carousel infiniteLoop="true">
-          <div className="justify-center items-center text-center flex ">
-            <div className="relative w-[250px] md:w-[400px] h-[200px] ">
-              <Image
-                layout="fill"
-                src={contact}
-                alt="/"
-                className=" rounded-3xl"
-              />
-            </div>
-            <div className="absolute flex flex-col w-[250px] md:w-[400px]  h-[200px] rounded-3xl bg-black/50 px-2  justify-center items-start ">
-              <h2 className="text-3xl text-white font-bold">
-                High quality Fruits
-              </h2>
-              <p className="text-white text-sm">
-                Lorem ipsum dolor sit amet consectetur.
+    <div className="pt-10">
+      <Carousel autoPlay infiniteLoop="true">
+        <div>
+          <section
+            className={`flex items-center justify-center  space-y-8 bg-gradient-to-b to-black from-red-500 h-80 text-white p-8`}
+          >
+            <div>
+              {" "}
+              <h1 className="text-2xl md:text-3xl xl:text-5xl py-2 font-bold">
+                Robust ecommerce store
+              </h1>
+              <p className=" py-2text-lg">
+                Fully fledged ecommmerce stores with checkout functionality and
+                payment intergrations
               </p>
-              <button className="bg-orange-600 rounded-xl text-white px-2 py-1 font-medium hover:bg-black/40 duration-300 text-sm">
-                Buy Now
+              <h1 className="text-xl  py-2 font-bold">
+                One free Month maintenance
+              </h1>
+              <button className="bg-black  text-sm hover:bg-green-600  text-white rounded-2xl px-1 py-2">
+                Get Started
               </button>
             </div>
-          </div>
-          <div className="justify-center py-4 items-center text-center flex ">
-            <div className="relative w-[250px] md:w-[400px] h-[200px] ">
-              <Image
-                layout="fill"
-                src={contact}
-                alt="/"
-                className=" rounded-3xl"
-              />
+          </section>
+        </div>
+        <div>
+          <section
+            className={`flex items-center justify-center  space-y-8 bg-gradient-to-b to-black from-blue-500 h-80 text-white p-8`}
+          >
+            <div>
+              <h1 className="text-2xl py-2 md:text-3xl xl:text-5xl font-bold">
+                Free Domain,Hosting and SSL
+              </h1>
+              <p className="text-lg py-2">
+                Our stores come with a free domain bearing your preffered domain
+                name at such an affordable rates
+              </p>
+              <h1 className="text-xl py-2 font-bold">SEO Friendly websites</h1>
+              <p className="text-lg py-2">
+                Up to 80% Off
+              </p>
             </div>
-            <div className="absolute flex flex-col w-[250px] md:w-[400px] h-[200px] rounded-3xl bg-black/50  justify-center items-start px-6 ">
-              <h2 className="text-xl text-white font-bold">Discounts Up to </h2>
-              <h2 className="text-4xl text-white font-bold">20%</h2>
-              <p className="text-white">Lorem ipsum dolor sit ?</p>
-              <button className="bg-orange-600 rounded-xl text-white px-2 py-1 font-medium hover:bg-black/40 duration-300 text-sm">
-                Buy Now
-              </button>
+          </section>
+        </div>
+        <div>
+          <section
+            className={`flex items-center justify-center  space-y-8 bg-gradient-to-b to-black from-yellow-500 h-80 text-white p-8`}
+          >
+            <div>
+              <h1 className="text-2xl py-2 md:text-3xl xl:text-5xl font-bold">
+                CMS Intergration
+              </h1>
+              <p className="text-lg py-2">
+                Clients have admin privilages to change the content of thier
+                websites easily on their phone
+              </p>
+              <h1 className="text-xl py-2 font-bold">
+                Easier to manage stores
+              </h1>
+              <p className="text-lg py-2">
+                Up to 80% Off
+              </p>
             </div>
-          </div>
-        </Carousel>
-      </div>
+          </section>
+        </div>
+      </Carousel>
     </div>
   );
 }

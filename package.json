@@ -9,6 +9,9 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@paypal/paypal-js": "2.1.5",
+    "promise-polyfill": "8.2.0",
+    "@paypal/react-paypal-js": "^7.8.1",
     "@heroicons/react": "^1.0.6",
     "@sanity/client": "^2.23.2",
     "@sanity/image-url": "^1.0.1",
