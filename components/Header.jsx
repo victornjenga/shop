@@ -79,13 +79,14 @@ function Header() {
               onClick={() => setOpenSearch(!openSearch)}
               className=" cursor-pointer block md:hidden duration-300 h-6 text-gray-600"
             />
-             <Link href="/cart">
-            <div className="relative text-4xl  cursor-pointer">
-              <ShoppingCartIcon className="h-6 text-gray-600" />
-              <span className="absolute top-0 right-[-4px] bg-red-600 h-3 w-3 justify-center items-center flex text-white  rounded-full text-sm ">
-              {totalQuantities}
-              </span>
-            </div></Link>
+            <Link href="/cart">
+              <div className="relative text-4xl  cursor-pointer">
+                <ShoppingCartIcon className="h-7 text-gray-600" />
+                <span className="absolute top-0 right-[-4px] bg-red-600 h-3 w-3 justify-center items-center flex text-white  rounded-full text-sm ">
+                  {totalQuantities}
+                </span>
+              </div>
+            </Link>
           </div>
         </div>
         <div>
@@ -120,7 +121,9 @@ function Header() {
             />
           </div>
           <div className="mx-1 text-xl border-b border-gray-600 border-solid ">
-            <p className="py-5">Lets Build Something Legendary Together</p>
+            <p className="py-5">
+              Want to Eat Healthy,We are Totally here For It
+            </p>
           </div>
           <div className="justify-center items-center block">
             <ul className="block space-y-4 pt-5">
@@ -128,7 +131,7 @@ function Header() {
                 <Link href="/">App Development</Link>
               </li> */}
               <li onClick={() => setOpen(false)} className="font-sm ">
-                <Link href="/web-solutions">Web Development</Link>
+                <Link href="/contact">Contact</Link>
               </li>
               <li onClick={() => setOpen(false)} className="font-sm ">
                 <Link href="/graphic-design">Graphic Design</Link>

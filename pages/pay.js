@@ -1,6 +1,6 @@
 import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
 import { useStateContext } from "../context/StateContext";
-const OrderButtonWrapper = ({price}) => {
+const OrderButtonWrapper = ({ price }) => {
   const { totalPrice } = useStateContext();
   return (
     <PayPalButtons
@@ -10,7 +10,7 @@ const OrderButtonWrapper = ({price}) => {
           purchase_units: [
             {
               amount: {
-                value: totalPrice / 100,
+                value: totalPrice / 121.08,
               },
             },
           ],

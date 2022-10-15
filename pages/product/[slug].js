@@ -12,7 +12,6 @@ import { useStateContext } from "../../context/StateContext";
 import Router from "next/router";
 import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
 
-
 const ProductDetails = ({ product, products }) => {
   const { incQty, decQty, qty, onAdd, setShowCart } = useStateContext();
   // console.log(products)
@@ -20,13 +19,13 @@ const ProductDetails = ({ product, products }) => {
   const OrderButtonWrapper = () => {
     return (
       <PayPalButtons
-        className="w-[60%] z-0 md:w-[30%]"
+        className="w-[80%] z-0 md:w-[30%]"
         createOrder={(data, actions) => {
           return actions.order.create({
             purchase_units: [
               {
                 amount: {
-                  value: price/100,
+                  value: price / 121.08,
                 },
               },
             ],
@@ -92,7 +91,10 @@ const ProductDetails = ({ product, products }) => {
       </div>
       <div className="flex relative justify-center items-center z-0 flex-col">
         <h2 className="text-2xl font-bold">Buy Now</h2>
-        <h2 className="text-xl font-lg">Pay Ksh {""}<span>{price}</span></h2>
+        <h2 className="text-xl font-lg">
+          Pay Ksh {""}
+          <span>{price}</span>
+        </h2>
         <PayPalScriptProvider
           options={{
             "client-id": process.env.NEXT_PUBLIC_PAYPAL_CLIENT_ID,

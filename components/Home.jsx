@@ -15,17 +15,14 @@ function Home() {
             <div>
               {" "}
               <h1 className="text-2xl md:text-3xl xl:text-5xl py-2 font-bold">
-                Robust ecommerce store
+                Fresh Fruits
               </h1>
               <p className=" py-2text-lg">
-                Fully fledged ecommmerce stores with checkout functionality and
-                payment intergrations
+                Fresh and healthy fruits delivered to your doorsteps
               </p>
-              <h1 className="text-xl  py-2 font-bold">
-                One free Month maintenance
-              </h1>
+              <h1 className="text-xl  py-2 font-bold">Free delivery</h1>
               <button className="bg-black  text-sm hover:bg-green-600  text-white rounded-2xl px-1 py-2">
-                Get Started
+                Buy Now
               </button>
             </div>
           </section>
@@ -36,16 +33,13 @@ function Home() {
           >
             <div>
               <h1 className="text-2xl py-2 md:text-3xl xl:text-5xl font-bold">
-                Free Domain,Hosting and SSL
+                Affordable and Reliable
               </h1>
               <p className="text-lg py-2">
-                Our stores come with a free domain bearing your preffered domain
-                name at such an affordable rates
+                Our fruits are toxic free and fresh out of the farm
               </p>
-              <h1 className="text-xl py-2 font-bold">SEO Friendly websites</h1>
-              <p className="text-lg py-2">
-                Up to 80% Off
-              </p>
+              <h1 className="text-xl py-2 font-bold">Juicy and delicios</h1>
+              <p className="text-lg py-2">Up to 20% Off</p>
             </div>
           </section>
         </div>
@@ -55,18 +49,16 @@ function Home() {
           >
             <div>
               <h1 className="text-2xl py-2 md:text-3xl xl:text-5xl font-bold">
-                CMS Intergration
+                100% refund guarantee
               </h1>
               <p className="text-lg py-2">
-                Clients have admin privilages to change the content of thier
-                websites easily on their phone
+                In case of an erroneous delivery of an item,Our dedicated
+                delivery team will restore the situation ASAP
               </p>
               <h1 className="text-xl py-2 font-bold">
                 Easier to manage stores
               </h1>
-              <p className="text-lg py-2">
-                Up to 80% Off
-              </p>
+              <p className="text-lg py-2">Up to 80% Off</p>
             </div>
           </section>
         </div>

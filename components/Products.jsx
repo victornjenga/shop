@@ -41,7 +41,7 @@ function Products({ product: { image, name, slug, price } }) {
               </div>
 
               <div className="flex  space-x-10 items-center  ">
-                <p className="font-semibold ">{price}</p>
+                <p className="font-semibold ">Ksh {""}{price}</p>
                 <AiOutlineShoppingCart className="text-xl" />
               </div>
             </div>
