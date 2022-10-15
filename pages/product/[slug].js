@@ -25,7 +25,7 @@ const ProductDetails = ({ product, products }) => {
             purchase_units: [
               {
                 amount: {
-                  value: price / 121.08,
+                  value: price / 100,
                 },
               },
             ],

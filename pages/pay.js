@@ -10,7 +10,7 @@ const OrderButtonWrapper = ({ price }) => {
           purchase_units: [
             {
               amount: {
-                value: totalPrice / 121.08,
+                value: totalPrice / 100,
               },
             },
           ],
