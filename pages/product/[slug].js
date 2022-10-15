@@ -17,7 +17,7 @@ const OrderButtonWrapper = ({ product, products }) => {
   console.log(products);
   return (
     <PayPalButtons
-      className="w-[70%] z-0 md:w-[40%]"
+      className="w-[60%] z-0 md:w-[30%]"
       createOrder={(data, actions) => {
         return actions.order.create({
           purchase_units: [
@@ -88,21 +88,20 @@ const ProductDetails = ({ product, products }) => {
               >
                 Add to Cart
               </button>
-
-              <div className="flex relative justify-center items-center z-0 flex-col">
-                <PayPalScriptProvider
-                  options={{
-                    "client-id": process.env.NEXT_PUBLIC_PAYPAL_CLIENT_ID,
-                    components: "buttons",
-                    "data-namespace": "paypalOrder",
-                  }}
-                >
-                  <OrderButtonWrapper className="w-[500px]  z-0" />
-                </PayPalScriptProvider>
-              </div>
             </div>
           </div>
         </div>
+      </div>
+      <div className="flex relative justify-center items-center z-0 flex-col">
+        <PayPalScriptProvider
+          options={{
+            "client-id": process.env.NEXT_PUBLIC_PAYPAL_CLIENT_ID,
+            components: "buttons",
+            "data-namespace": "paypalOrder",
+          }}
+        >
+          <OrderButtonWrapper className="w-[500px]  z-0" />
+        </PayPalScriptProvider>
       </div>
       {/* <div className="justify-center items-center flex flex-col">
         <h2 className="text-3xl py-4 font-bold italic">You may also like</h2>
