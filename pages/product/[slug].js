@@ -93,6 +93,7 @@ const ProductDetails = ({ product, products }) => {
         </div>
       </div>
       <div className="flex relative justify-center items-center z-0 flex-col">
+        <h2 className="text-2xl font-bold">Buy Now</h2>
         <PayPalScriptProvider
           options={{
             "client-id": process.env.NEXT_PUBLIC_PAYPAL_CLIENT_ID,
