@@ -55,22 +55,7 @@ const data = [
 ];
 export default function App({products}) {
   // console.log(products)
-  const { data: session, status } = useSession();
 
-  const handleLogin = () => {
-    signIn();
-    // const doc = {
-    //   _id: session.user.id,
-    //   _type: "user",
-    //   userName: session.user.name,
-    //   image: session.user.image,
-    // };
-    // client.createIfNotExists(doc).then(() => {
-    //   console.log("user created");
-    // });
-  };
-
-  if (session) {
     return (
       <div className=" bg-gray-100 ">
         <Head>
@@ -101,18 +86,7 @@ export default function App({products}) {
         </main>
       </div>
     );
-  } else {
-    return (
-      <div className="grid place-items-center">
-        <button
-          onClick={handleLogin}
-          className="p-5 bg-blue-500 rounded-full text-white text-center cursor-pointer "
-        >
-          Login with Google
-        </button>
-      </div>
-    );
-  }
+
 }
 export const getServerSideProps = async () => {
   const query = '*[_type == "product"]';
