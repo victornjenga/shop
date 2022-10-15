@@ -12,33 +12,31 @@ import { useStateContext } from "../../context/StateContext";
 import Router from "next/router";
 import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
 
-const OrderButtonWrapper = ({ product, products }) => {
-  // const { price } = product;
-  console.log(products);
-  return (
-    <PayPalButtons
-      className="w-[60%] z-0 md:w-[30%]"
-      createOrder={(data, actions) => {
-        return actions.order.create({
-          purchase_units: [
-            {
-              amount: {
-                value: "100",
-              },
-            },
-          ],
-        });
-      }}
-    />
-  );
-};
+
 const ProductDetails = ({ product, products }) => {
   const { incQty, decQty, qty, onAdd, setShowCart } = useStateContext();
   // console.log(products)
   const { image, name, details, price } = product;
-
+  const OrderButtonWrapper = () => {
+    return (
+      <PayPalButtons
+        className="w-[60%] z-0 md:w-[30%]"
+        createOrder={(data, actions) => {
+          return actions.order.create({
+            purchase_units: [
+              {
+                amount: {
+                  value: price/100,
+                },
+              },
+            ],
+          });
+        }}
+      />
+    );
+  };
   return (
-    <div>
+    <div className="pt-10">
       <div className="flex justify-center items-center">
         <div className=" flex-wrap md:flex space-x-10 m-10 mt-15 justify-center items-center">
           <div className="image-container">
@@ -48,7 +46,7 @@ const ProductDetails = ({ product, products }) => {
             />
           </div>
           <div className="mt-10">
-            <h1>{name}</h1>
+            <h1 className="text-3xl font-lg">{name}</h1>
             <div className="flex items-center space-x-3 text-center ju">
               <div className="text-[#f02d34] mt-3 flex space-x-2 text-center ">
                 <AiFillStar />
@@ -94,6 +92,7 @@ const ProductDetails = ({ product, products }) => {
       </div>
       <div className="flex relative justify-center items-center z-0 flex-col">
         <h2 className="text-2xl font-bold">Buy Now</h2>
+        <h2 className="text-xl font-lg">Pay Ksh {""}<span>{price}</span></h2>
         <PayPalScriptProvider
           options={{
             "client-id": process.env.NEXT_PUBLIC_PAYPAL_CLIENT_ID,

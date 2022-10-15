@@ -91,7 +91,7 @@ function Header() {
         <div>
           {openSearch && (
             <div className="flex duration-300 md:hidden h-8 pb-2 items-center rounded-full mx-4 py-2 border-gray-700 px-[10%] border">
-              <SearchIcon className="h-6 text-gray-600" />
+              <SearchIcon className="text-7xl text-gray-600" />
               <input
                 className=" flex-shrink ml-2 items-center bg-transparent outline-none placeholder-gray-500:"
                 type="text"

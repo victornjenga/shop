@@ -25,9 +25,9 @@ export default function App() {
 
   return (
     <div className="flex relative pt-[30%] md:pt-[10%] justify-center items-center z-0 flex-col">
-      <h2>
+      <h2 className="text-2xl pb-4 font-bold">
         Pay{" "}
-        <span>
+        <span className="text-green-600 ">
           Ksh {""}
           {totalPrice}
         </span>

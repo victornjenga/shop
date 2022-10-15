@@ -22,7 +22,7 @@ const Cart = () => {
   } = useStateContext();
 
   return (
-    <div className="" ref={cartRef}>
+    <div className="pt-16" ref={cartRef}>
       <div className="flex flex-col items-center  justify-center">
         <button className="flex pt-4 text-center text-xl items-center font-bold">
           <span className="">Your Cart:</span>
@@ -42,10 +42,10 @@ const Cart = () => {
             </Link>
           </div>
         ) : (
-          <div className="flex flex-col items-center justify-center">
+          <div className="flex space-y-1 flex-col items-center justify-center">
             {cartItems.map((item) => (
               <div
-                className="block md:flex p-5  mt-20 space-x-6"
+                className="block md:flex p-5  pt-4 space-x-6"
                 key={item._id}
               >
                 <img
@@ -90,7 +90,7 @@ const Cart = () => {
         )}
       </div>
       {cartItems.length >= 1 && (
-        <div className="pt-10 bottom-4 w-full  justify-center items-center flex- flex-col">
+        <div className="pt-4 bottom-4 w-full  justify-center items-center flex- flex-col">
           <div className="flex text-2xl font-bold justify-around">
             <h3>Subtotal:</h3>
             <h3>Ksh {totalPrice}</h3>
