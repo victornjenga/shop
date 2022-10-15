@@ -89,7 +89,7 @@ const ProductDetails = ({ product, products }) => {
                 Add to Cart
               </button>
 
-              <div>
+              <div className="flex relative justify-center items-center z-0 flex-col">
                 <PayPalScriptProvider
                   options={{
                     "client-id": process.env.NEXT_PUBLIC_PAYPAL_CLIENT_ID,
@@ -97,7 +97,7 @@ const ProductDetails = ({ product, products }) => {
                     "data-namespace": "paypalOrder",
                   }}
                 >
-                  <OrderButtonWrapper className="w-[500px]  z-0"  />
+                  <OrderButtonWrapper className="w-[500px]  z-0" />
                 </PayPalScriptProvider>
               </div>
             </div>
