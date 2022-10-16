@@ -91,7 +91,6 @@ export default function ContactUs() {
   return (
     <main>
       <nav className="flex flex-row justify-between items-center p-8 bg-blue-50">
-     
         <div className="flex flex-row items-center space-x-8">
           <a href="#" className="hidden lg:block">
             <svg
@@ -165,7 +164,7 @@ export default function ContactUs() {
           <h1 className="text-4xl font-bold mt-4  text-gray-700">
             Lets talk about your projects.
           </h1>
-          <p className="text-sm text-gray-700 mt-4 font-light ">
+          <p className=" text-gray-700 mt-4 font-light ">
             Fill the form and send in your queries. I will respond as soon as I
             can. Alternatively, You can reach out to me at my email address.
           </p>
@@ -174,14 +173,9 @@ export default function ContactUs() {
           onSubmit={handleSubmit}
           className="rounded-lg shadow-xl flex flex-col px-8 py-8 bg-white "
         >
-          <h1 className="text-2xl font-bold ">
-            Send a message
-          </h1>
+          <h1 className="text-2xl font-bold ">Send a message</h1>
 
-          <label
-            htmlFor="fullname"
-            className="text-gray-500 font-light mt-8 "
-          >
+          <label htmlFor="fullname" className="text-gray-500 font-light mt-8 ">
             Full name<span className="text-red-500 ">*</span>
           </label>
           <input
@@ -197,10 +191,7 @@ export default function ContactUs() {
             <p className="text-red-500">Fullname cannot be empty.</p>
           )}
 
-          <label
-            htmlFor="email"
-            className="text-gray-500 font-light mt-4 "
-          >
+          <label htmlFor="email" className="text-gray-500 font-light mt-4 ">
             E-mail<span className="text-red-500">*</span>
           </label>
           <input
@@ -216,10 +207,7 @@ export default function ContactUs() {
             <p className="text-red-500">Email cannot be empty.</p>
           )}
 
-          <label
-            htmlFor="subject"
-            className="text-gray-500 font-light mt-4 "
-          >
+          <label htmlFor="subject" className="text-gray-500 font-light mt-4 ">
             Subject<span className="text-red-500">*</span>
           </label>
           <input
@@ -234,10 +222,7 @@ export default function ContactUs() {
           {errors?.subject && (
             <p className="text-red-500">Subject cannot be empty.</p>
           )}
-          <label
-            htmlFor="message"
-            className="text-gray-500 font-light mt-4 "
-          >
+          <label htmlFor="message" className="text-gray-500 font-light mt-4 ">
             Message<span className="text-red-500">*</span>
           </label>
           <textarea
@@ -335,9 +320,7 @@ export default function ContactUs() {
                 fill="currentColor"
               />
             </svg>
-            <p className="text-gray-500 font-light">
-             contact@civrot.com
-            </p>
+            <p className="text-gray-500 font-light">contact@civrot.com</p>
           </div>
           <div className="card p-8 shadow rounded-md flex flex-row items-center space-x-4 hover:shadow-lg cursor-pointer transition duration-200">
             <svg
@@ -361,9 +344,7 @@ export default function ContactUs() {
                 fill="currentColor"
               />
             </svg>
-            <p className="text-gray-500 font-light">
-              Juja,Kenya
-            </p>
+            <p className="text-gray-500 font-light">Juja,Kenya</p>
           </div>
         </div>
       </section>
