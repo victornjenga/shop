@@ -114,7 +114,8 @@ const ProductDetails = ({ product, products }) => {
                 5.Enter amount {""} <span>Ksh {price}</span>
               </li>
               <li>6.Wait for the M-Pesa message</li>
-              <li>8.Click Pay Now.</li>
+              <li>8.Enter Transaction Code </li>
+              <li>9.Click Confirm</li>
             </ol>
             <form>
               <input

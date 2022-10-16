@@ -60,7 +60,7 @@ function Header() {
                 placeholder="Search Products"
               />
             </div>
-            <div>
+            <div class>
               <BellIcon className="h-6 text-gray-600" />
             </div>
           </div>
@@ -69,7 +69,7 @@ function Header() {
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 24 24"
               fill="currentColor"
-              className="w-8 h-8"
+              className="w-8  hidden md:flex h-8"
             >
               <path
                 fillRule="evenodd"
@@ -79,7 +79,7 @@ function Header() {
             </svg>{" "}
             <SearchIcon
               onClick={() => setOpenSearch(!openSearch)}
-              className=" cursor-pointer block md:hidden duration-300 h-6 text-gray-600"
+              className=" cursor-pointer block md:hidden duration-300 h-7 text-gray-600"
             />
             <Link href="/cart">
               <div className="relative text-4xl  cursor-pointer">
