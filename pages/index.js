@@ -81,7 +81,7 @@ export default function App({ products }) {
             </>
           ))}
         </div>
-        <Footer />
+       
       </main>
     </div>
   );
