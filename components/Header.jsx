@@ -136,7 +136,7 @@ function Header() {
                 <Link href="/contact">Contact</Link>
               </li>
               {/* <li onClick={() => setOpen(false)} className="font-sm ">
-                <Link href="/graphic-design">Graphic Design</Link>
+                <Link href="#all-products">All</Link>
               </li> */}
             </ul>
           </div>

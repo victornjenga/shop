@@ -9,6 +9,7 @@ import Header from "../components/Header";
 import Products from "../components/Products";
 import Footer from "../components/Footer";
 import { client } from "../lib/client";
+import { useState } from "react";
 const data = [
   {
     _id: 1,
@@ -53,8 +54,9 @@ const data = [
     slug: "fruit",
   },
 ];
-export default function App({ products, categories }) {
-  console.log(categories);
+export default function App({ products, uniques, juicy, bests }) {
+  const [category, setCategory] = useState("");
+  console.log(uniques);
 
   return (
     <div className=" bg-gray-100 ">
@@ -68,25 +70,41 @@ export default function App({ products, categories }) {
         <Home />
         <div className="flex items-center justify-evenly py-4">
           <div>
-            <h2 className="text-2xl font-bold">Best seller</h2>
+            <h2 className="text-2xl font-bold">Awesome Fruits</h2>
           </div>
           <div>
             <button className="font-medium">View All</button>
           </div>
-          {/* <div>
-            {categories.map((category) => (
-              <div key={category._id}>
-                <h2>{category.title}</h2>
-              </div>
-            ))}
-          </div> */}
         </div>
-        <div className="grid grid-cols-2 space-x-4 space-y-4  md:grid-cols-4">
-          {products.map((product) => (
-            <>
-              <Products key={product._id} product={product} />
-            </>
-          ))}
+        <div className="flex flex-col justify-center items-center">
+          Best Selling
+          <div className="grid pb-4 justify-center place-items-center grid-cols-2 space-x-1 space-y-3  md:grid-cols-4">
+            {bests.map((product) => (
+              <>
+                <Products key={product._id} product={product} />
+              </>
+            ))}
+          </div>
+        </div>
+        <div className="flex flex-col justify-center items-center">
+          Unique Fruits
+          <div className="grid pb-4 justify-center place-items-center grid-cols-2 space-x-1 space-y-3  md:grid-cols-4">
+            {uniques.map((product) => (
+              <>
+                <Products key={product._id} product={product} />
+              </>
+            ))}
+          </div>
+        </div>
+        <div className="flex flex-col justify-center items-center">
+          Juicy Fruits
+          <div className="grid pb-4 justify-center place-items-center grid-cols-2 space-x-1 space-y-3  md:grid-cols-4">
+            {juicy.map((product) => (
+              <>
+                <Products key={product._id} product={product} />
+              </>
+            ))}
+          </div>
         </div>
       </main>
     </div>
@@ -96,10 +114,17 @@ export const getServerSideProps = async () => {
   const query = '*[_type == "product"]';
   const products = await client.fetch(query);
 
-  const category = '*[_type == "category" ]';
-  const categories = await client.fetch(category);
+  const category1 =
+    '*[_type == "product" && references("f9b2c4fc-8868-46cd-933c-2a2b3addf592")] ';
+  const bests = await client.fetch(category1);
+  const category2 =
+    '*[_type == "product" && references("58a90eea-1d00-4c07-9a7d-570251c513ee")] ';
+  const uniques = await client.fetch(category2);
+  const category3 =
+    '*[_type == "product" && references("9bb78bdc-8824-42cf-bb52-bc1df3fb7b61")] ';
+  const juicy = await client.fetch(category3);
 
   return {
-    props: { products, categories },
+    props: { products, uniques, juicy, bests },
   };
 };
