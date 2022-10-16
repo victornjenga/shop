@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { client, urlFor } from "../../lib/client";
 import {
   AiOutlineMinus,
@@ -13,6 +13,7 @@ import Router from "next/router";
 import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
 
 const ProductDetails = ({ product, products }) => {
+  const [openMpesa, setOpenMpesa] = useState("");
   const { incQty, decQty, qty, onAdd, totalPrice } = useStateContext();
   // console.log(products)
   const { image, name, details, price } = product;
@@ -95,6 +96,37 @@ const ProductDetails = ({ product, products }) => {
           Pay Ksh {""}
           <span>{price}</span>
         </h2>
+        <button
+          onClick={() => setOpenMpesa(!openMpesa)}
+          className="w-[80%] z-0 md:w-[30%] bg-green-600 px-3 text-white my-2 py-2 rounded-xl font-medium"
+        >
+          Pay With Mpesa
+        </button>
+        {openMpesa && (
+          <div className="flex flex-col items-center justify-center my-2">
+            <h2 className="italic font-medium text-xl">Payment Instructions</h2>
+            <ol>
+              <li>1.Go to M-Pesa menu</li>
+              <li>2.Click on Lipa na M-Pesa</li>
+              <li>3.Click on Buy Goods and Services</li>
+              <li>4.Enter till no 9956353</li>
+              <li>
+                5.Enter amount {""} <span>Ksh {price}</span>
+              </li>
+              <li>6.Wait for the M-Pesa message</li>
+              <li>8.Click Pay Now.</li>
+            </ol>
+            <form>
+              <input
+                className="border-black border rounded-lg my-2"
+                placeholder="Mpesa Transaction ID"
+              />
+            </form>
+            <button className="text-sm py-1 px-2 hover:bg-green-600 bg-gray-800 rounded-md text-white">
+              Confirm Payment
+            </button>
+          </div>
+        )}
         <PayPalScriptProvider
           options={{
             "client-id": process.env.NEXT_PUBLIC_PAYPAL_CLIENT_ID,

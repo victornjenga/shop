@@ -53,8 +53,8 @@ const data = [
     slug: "fruit",
   },
 ];
-export default function App({ products }) {
-  // console.log(products)
+export default function App({ products, categories }) {
+  console.log(categories);
 
   return (
     <div className=" bg-gray-100 ">
@@ -73,6 +73,13 @@ export default function App({ products }) {
           <div>
             <button className="font-medium">View All</button>
           </div>
+          {/* <div>
+            {categories.map((category) => (
+              <div key={category._id}>
+                <h2>{category.title}</h2>
+              </div>
+            ))}
+          </div> */}
         </div>
         <div className="grid grid-cols-2 space-x-4 space-y-4  md:grid-cols-4">
           {products.map((product) => (
@@ -81,7 +88,6 @@ export default function App({ products }) {
             </>
           ))}
         </div>
-       
       </main>
     </div>
   );
@@ -90,7 +96,10 @@ export const getServerSideProps = async () => {
   const query = '*[_type == "product"]';
   const products = await client.fetch(query);
 
+  const category = '*[_type == "category" ]';
+  const categories = await client.fetch(category);
+
   return {
-    props: { products },
+    props: { products, categories },
   };
 };
