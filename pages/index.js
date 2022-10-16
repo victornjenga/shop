@@ -72,12 +72,10 @@ export default function App({ products, uniques, juicy, bests }) {
           <div>
             <h2 className="text-2xl font-bold">Awesome Fruits</h2>
           </div>
-          <div>
-            <button className="font-medium">View All</button>
-          </div>
         </div>
         <div className="flex flex-col justify-center items-center">
-          Best Selling
+          <h1 className="text-xl font-bold italic">Best Selling</h1>
+
           <div className="grid pb-4 justify-center place-items-center grid-cols-2 space-x-1 space-y-3  md:grid-cols-4">
             {bests.map((product) => (
               <>
@@ -87,7 +85,8 @@ export default function App({ products, uniques, juicy, bests }) {
           </div>
         </div>
         <div className="flex flex-col justify-center items-center">
-          Unique Fruits
+          <h1 className="text-xl font-bold italic">Unique Fruits</h1>
+
           <div className="grid pb-4 justify-center place-items-center grid-cols-2 space-x-1 space-y-3  md:grid-cols-4">
             {uniques.map((product) => (
               <>
@@ -97,7 +96,8 @@ export default function App({ products, uniques, juicy, bests }) {
           </div>
         </div>
         <div className="flex flex-col justify-center items-center">
-          Juicy Fruits
+          <h1 className="text-xl font-bold italic">Juicy Fruits</h1>
+
           <div className="grid pb-4 justify-center place-items-center grid-cols-2 space-x-1 space-y-3  md:grid-cols-4">
             {juicy.map((product) => (
               <>
