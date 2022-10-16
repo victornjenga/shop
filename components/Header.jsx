@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { AiOutlineShopping } from "react-icons/ai";
+import { FaFacebookF, FaTwitter, FaInstagram } from "react-icons/fa";
 import {
   BellIcon,
   ChatIcon,
@@ -43,11 +44,12 @@ function Header() {
           </div>
 
           <div className="hidden md:flex space-x-10 items-center justify-center  ">
-            <div>
-              <h2>Home</h2>
+           
+            <div className="cursor-pointer">
+              <h2><Link href="/">Home</Link></h2>
             </div>
-            <div>
-              <h2>Discover</h2>
+            <div className="cursor-pointer">
+              <h2><Link href="/contact">Contact</Link></h2>
             </div>
 
             <div className="flex items-center border  ml-2 rounded-full p-2 bg-gray-100">
@@ -121,8 +123,8 @@ function Header() {
             />
           </div>
           <div className="mx-1 text-xl border-b border-gray-600 border-solid ">
-            <p className="py-5">
-              Want to Eat Healthy,We are Totally here For It
+            <p className="py-2">
+            Freshest, best quality fruits
             </p>
           </div>
           <div className="justify-center items-center block">
@@ -133,12 +135,41 @@ function Header() {
               <li onClick={() => setOpen(false)} className="font-sm ">
                 <Link href="/contact">Contact</Link>
               </li>
-              <li onClick={() => setOpen(false)} className="font-sm ">
+              {/* <li onClick={() => setOpen(false)} className="font-sm ">
                 <Link href="/graphic-design">Graphic Design</Link>
-              </li>
+              </li> */}
             </ul>
           </div>
           <h2 className="pt-5 text-xl   text-pink-600">Lets Connect</h2>
+          <div className="flex space-x-2 py-2">
+            <a
+              href="https://facebook.com/civrotke/"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <div className="shadow-lg w-10 h-10 justify-center items-center flex shadow-gray-400 rounded-full ">
+                <FaFacebookF />
+              </div>
+            </a>{" "}
+            <a
+              href="https://twitter.com/Civrot2020"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <div className="shadow-lg w-10 h-10 justify-center items-center flex shadow-gray-400 rounded-full ">
+                <FaTwitter />
+              </div>
+            </a>
+            <a
+              href="https://www.instagram.com/civrot_web_services/"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <div className="shadow-lg w-10 h-10 justify-center items-center flex shadow-gray-400 rounded-full ">
+                <FaInstagram />
+              </div>
+            </a>
+          </div>
         </div>
       )}
     </>

@@ -13,7 +13,7 @@ import Router from "next/router";
 import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
 
 const ProductDetails = ({ product, products }) => {
-  const { incQty, decQty, qty, onAdd, setShowCart } = useStateContext();
+  const { incQty, decQty, qty, onAdd, totalPrice } = useStateContext();
   // console.log(products)
   const { image, name, details, price } = product;
   const OrderButtonWrapper = () => {

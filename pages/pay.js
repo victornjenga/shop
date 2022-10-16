@@ -1,5 +1,6 @@
 import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
 import { useStateContext } from "../context/StateContext";
+
 const OrderButtonWrapper = ({ price }) => {
   const { totalPrice } = useStateContext();
   return (

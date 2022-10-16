@@ -29,7 +29,7 @@ const Cart = () => {
           <span className="">{totalQuantities} items</span>
         </button>
         {cartItems.length < 1 ? (
-          <div className=" justify-center items-center flex flex-col">
+          <div className=" justify-center pb-10 items-center flex flex-col">
             <AiOutlineShopping size={150} />
             <h3>Your Shopping Cart is Empty</h3>
             <Link href="/">
@@ -44,10 +44,7 @@ const Cart = () => {
         ) : (
           <div className="flex space-y-1 flex-col items-center justify-center">
             {cartItems.map((item) => (
-              <div
-                className="block md:flex p-5  pt-4 space-x-6"
-                key={item._id}
-              >
+              <div className="block md:flex p-5  pt-4 space-x-6" key={item._id}>
                 <img
                   className="w-[180px] h-[150px] bg-gray-500"
                   src={urlFor(item?.image[0])}
@@ -90,7 +87,7 @@ const Cart = () => {
         )}
       </div>
       {cartItems.length >= 1 && (
-        <div className="pt-4 bottom-4 w-full  justify-center items-center flex- flex-col">
+        <div className="pt-4 pb-10 bottom-4 w-full  justify-center items-center flex- flex-col">
           <div className="flex text-2xl font-bold justify-around">
             <h3>Subtotal:</h3>
             <h3>Ksh {totalPrice}</h3>
