@@ -18,6 +18,7 @@ import Link from "next/link";
 import civrot from "../public/assets/civrot.png";
 import { AiOutlineClose, AiOutlineMenu } from "react-icons/ai";
 import { useStateContext } from "../context/StateContext";
+import toast, { Toaster } from 'react-hot-toast';
 
 function Header() {
   const { showCart, setShowCart, totalQuantities } = useStateContext();
@@ -25,6 +26,7 @@ function Header() {
   const [openSearch, setOpenSearch] = useState();
   return (
     <>
+    <Toaster />
       <div className="block  fixed z-10 bg-slate-200 w-full  items-center">
         <div className="text-center flex space-x-10 justify-evenly md:justify-center">
           <div className="flex space-x-4 items-center">
