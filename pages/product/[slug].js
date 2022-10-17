@@ -14,9 +14,77 @@ import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
 
 const ProductDetails = ({ product, products }) => {
   const [openMpesa, setOpenMpesa] = useState("");
+
+  const [mpesacode, setMpesaCode] = useState("");
+  const [phonenumber, setPhoneNumber] = useState("");
+  //   Form validation
+  const [errors, setErrors] = useState({});
+  const [buttonText, setButtonText] = useState("Confirm Payment");
+
+  const [showSuccessMessage, setShowSuccessMessage] = useState(false);
+  const [showFailureMessage, setShowFailureMessage] = useState(false);
+
   const { incQty, decQty, qty, onAdd, totalPrice } = useStateContext();
   // console.log(products)
   const { image, name, details, price } = product;
+
+  const handleValidation = () => {
+    let tempErrors = {};
+    let isValid = true;
+
+    if (mpesacode.length <= 0) {
+      tempErrors["mpesacode"] = true;
+      isValid = false;
+    }
+    if (phonenumber.length <= 0) {
+      tempErrors["phonenumber"] = true;
+      isValid = false;
+    }
+    setErrors({ ...tempErrors });
+    console.log("errors", errors);
+    return isValid;
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    let isValidForm = handleValidation();
+
+    if (isValidForm) {
+      setButtonText("Sending");
+      const res = await fetch("/api/mpesacode", {
+        body: JSON.stringify({
+          phonenumber: phonenumber,
+          mpesacode: mpesacode,
+        }),
+        headers: {
+          "Content-Type": "application/json",
+        },
+        method: "POST",
+      });
+
+      const { error } = await res.json();
+      if (error) {
+        console.log(error);
+        setShowSuccessMessage(false);
+        setShowFailureMessage(true);
+        setButtonText("Confirm Payment");
+
+        // Reset form fields
+        setMpesaCode("");
+        setPhoneNumber("");
+        return;
+      }
+      setShowSuccessMessage(true);
+      setShowFailureMessage(false);
+      setButtonText("Confirm Payment");
+      // Reset form fields
+      setMpesaCode("");
+      setPhoneNumber("");
+    }
+    console.log(phonenumber, mpesacode);
+  };
+
   const OrderButtonWrapper = () => {
     return (
       <PayPalButtons
@@ -117,15 +185,57 @@ const ProductDetails = ({ product, products }) => {
               <li>8.Enter Transaction Code </li>
               <li>9.Click Confirm</li>
             </ol>
-            <form>
+            <form onSubmit={handleSubmit} className="flex flex-col space-y-2">
               <input
-                className="border-black border rounded-lg my-2"
+                type="text"
+                value={phonenumber}
+                onChange={(e) => {
+                  setPhoneNumber(e.target.value);
+                }}
+                name="phonenumber"
+                className="border-black  text-center border rounded-lg"
+                placeholder=" Mpesa Phone Number"
+              />
+              {errors?.phonenumber && (
+                <p className="text-red-500 text-sm ">
+                  Phone Number cannot be empty.
+                </p>
+              )}
+              <input
+                type="text"
+                value={mpesacode}
+                onChange={(e) => {
+                  setMpesaCode(e.target.value);
+                }}
+                name="mpesacode"
+                className="border-black text-center border rounded-lg"
                 placeholder="Mpesa Transaction ID"
               />
+              {errors?.mpesacode && (
+                <p className="text-red-500 text-sm">
+                  Transaction ID cannot be empty.
+                </p>
+              )}
+              <button
+                type="submit"
+                className="text-sm py-1 px-2 hover:bg-green-600 bg-gray-800 rounded-md text-white"
+              >
+                {buttonText}
+              </button>
+              <div className="text-left">
+                {showSuccessMessage && (
+                  <p className="text-green-500 font-semibold text-[10px] my-2">
+                    Thankyou! Your Code has been delivered for confirmation.{" "}
+                    <br></br>Getting Back To You shortly
+                  </p>
+                )}
+                {showFailureMessage && (
+                  <p className="text-red-500">
+                    Oops! Something went wrong, please try again.
+                  </p>
+                )}
+              </div>
             </form>
-            <button className="text-sm py-1 px-2 hover:bg-green-600 bg-gray-800 rounded-md text-white">
-              Confirm Payment
-            </button>
           </div>
         )}
         <PayPalScriptProvider
