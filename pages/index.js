@@ -56,7 +56,7 @@ const data = [
 ];
 export default function App({ products, uniques, juicy, bests }) {
   const [category, setCategory] = useState("");
-  console.log(uniques);
+  console.log(products);
 
   return (
     <div className=" bg-gray-100 ">

@@ -21,6 +21,7 @@ import { useStateContext } from "../context/StateContext";
 import toast, { Toaster } from 'react-hot-toast';
 
 function Header() {
+  const [search,setSearch]= useState()
   const { showCart, setShowCart, totalQuantities } = useStateContext();
   const [open, setOpen] = useState();
   const [openSearch, setOpenSearch] = useState();
@@ -55,11 +56,12 @@ function Header() {
             </div>
 
             <div className="flex items-center border  ml-2 rounded-full p-2 bg-gray-100">
-              <SearchIcon className="h-6 text-gray-600" />
+              <SearchIcon  className="h-6 text-gray-600" />
               <input
                 className=" hidden md:inline-flex flex-shrink ml-2 items-center bg-transparent outline-none placeholder-gray-500:"
                 type="text"
                 placeholder="Search Products"
+                onChange={(e)=>setSearch(e.target.value)}
               />
             </div>
             <div class>

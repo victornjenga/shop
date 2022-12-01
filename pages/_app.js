@@ -32,6 +32,7 @@ export default function App({
           target="_blank"
           rel="noreferrer"
         >
+
           <RiWhatsappFill className=" text-5xl md:text-7xl text-green-600 " />
         </a>
       </div>

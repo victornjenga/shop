@@ -51,8 +51,8 @@ const Cart = () => {
                 />
                 <div className="">
                   <div className="flex space-x-10 items-center justify-center">
-                    <h5 className="font-medium text-2xl">{item.name}</h5>
-                    <h4 className="font-medium text-2xl">Ksh{item.price}</h4>
+                    <h5 className="font-medium text-2xl">{item?.name}</h5>
+                    <h4 className="font-medium text-2xl">Ksh{item?.price}</h4>
                   </div>
                   <div className="flex spaxe-x-10 justify-between">
                     <p className="flex space-x-3 justify-center   ">
@@ -96,7 +96,7 @@ const Cart = () => {
             <Link href="/pay">
               <button
                 type="button"
-                className="bg-green-500 text-white px-3  py-2 rounded-xl text-2xl font-bold hover:scale-105 duration-300 "
+                className="bg-green-500 text-white px-2  py-2 rounded-xl text-xl font-medium hover:scale-105 duration-300 "
                 onClick=""
               >
                 Proceed to Checkout

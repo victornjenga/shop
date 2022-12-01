@@ -11,78 +11,36 @@ import { Products } from "../../components/Products";
 import { useStateContext } from "../../context/StateContext";
 import Router from "next/router";
 import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
+import Axios from "axios";
 
 const ProductDetails = ({ product, products }) => {
+  const [phone, setPhone] = useState();
+  const [amount, setAmount] = useState();
+
   const [openMpesa, setOpenMpesa] = useState("");
 
-  const [mpesacode, setMpesaCode] = useState("");
-  const [phonenumber, setPhoneNumber] = useState("");
   //   Form validation
-  const [errors, setErrors] = useState({});
   const [buttonText, setButtonText] = useState("Confirm Payment");
-
-  const [showSuccessMessage, setShowSuccessMessage] = useState(false);
-  const [showFailureMessage, setShowFailureMessage] = useState(false);
 
   const { incQty, decQty, qty, onAdd, totalPrice } = useStateContext();
   // console.log(products)
   const { image, name, details, price } = product;
 
-  const handleValidation = () => {
-    let tempErrors = {};
-    let isValid = true;
-
-    if (mpesacode.length <= 0) {
-      tempErrors["mpesacode"] = true;
-      isValid = false;
-    }
-    if (phonenumber.length <= 0) {
-      tempErrors["phonenumber"] = true;
-      isValid = false;
-    }
-    setErrors({ ...tempErrors });
-    console.log("errors", errors);
-    return isValid;
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-
-    let isValidForm = handleValidation();
-
-    if (isValidForm) {
-      setButtonText("Sending");
-      const res = await fetch("/api/mpesacode", {
-        body: JSON.stringify({
-          phonenumber: phonenumber,
-          mpesacode: mpesacode,
-        }),
-        headers: {
-          "Content-Type": "application/json",
-        },
-        method: "POST",
-      });
-
-      const { error } = await res.json();
-      if (error) {
+  const payHandler = (event) => {
+    event.preventDefault();
+    setButtonText("Processing");
+    Axios.post("https://railwaympesa.up.railway.app/token", {
+      amount:price,
+      phone,
+    })
+      .then((res) => {
+        console.log(res);
+        setButtonText("Pay");
+      })
+      .catch((error) => {
         console.log(error);
-        setShowSuccessMessage(false);
-        setShowFailureMessage(true);
-        setButtonText("Confirm Payment");
-
-        // Reset form fields
-        setMpesaCode("");
-        setPhoneNumber("");
-        return;
-      }
-      setShowSuccessMessage(true);
-      setShowFailureMessage(false);
-      setButtonText("Confirm Payment");
-      // Reset form fields
-      setMpesaCode("");
-      setPhoneNumber("");
-    }
-    console.log(phonenumber, mpesacode);
+        setButtonText("Pay");
+      });
   };
 
   const OrderButtonWrapper = () => {
@@ -172,7 +130,7 @@ const ProductDetails = ({ product, products }) => {
         </button>
         {openMpesa && (
           <div className="flex flex-col items-center justify-center my-2">
-            <h2 className="italic font-medium text-xl">Payment Instructions</h2>
+            {/* <h2 className="italic font-medium text-xl">Payment Instructions</h2>
             <ol>
               <li>1.Go to M-Pesa menu</li>
               <li>2.Click on Lipa na M-Pesa</li>
@@ -184,45 +142,31 @@ const ProductDetails = ({ product, products }) => {
               <li>6.Wait for the M-Pesa message</li>
               <li>8.Enter Transaction Code </li>
               <li>9.Click Confirm</li>
-            </ol>
-            <form onSubmit={handleSubmit} className="flex flex-col space-y-2">
-              <input
+            </ol> */}
+            <form onClick={payHandler} className="flex flex-col space-y-2">
+              {/* <input
                 type="text"
-                value={phonenumber}
-                onChange={(e) => {
-                  setPhoneNumber(e.target.value);
-                }}
-                name="phonenumber"
+                onChange={(e) => setAmount(e.target.value)}
+                name="Amount"
                 className="border-black  text-center border rounded-lg"
-                placeholder=" Mpesa Phone Number"
-              />
-              {errors?.phonenumber && (
-                <p className="text-red-500 text-sm ">
-                  Phone Number cannot be empty.
-                </p>
-              )}
+                placeholder=" Amount"
+              /> */}
+
               <input
                 type="text"
-                value={mpesacode}
-                onChange={(e) => {
-                  setMpesaCode(e.target.value);
-                }}
-                name="mpesacode"
+                onChange={(e) => setPhone(e.target.value)}
+                name="Phone"
                 className="border-black text-center border rounded-lg"
-                placeholder="Mpesa Transaction ID"
+                placeholder="Phone Number"
               />
-              {errors?.mpesacode && (
-                <p className="text-red-500 text-sm">
-                  Transaction ID cannot be empty.
-                </p>
-              )}
+
               <button
                 type="submit"
                 className="text-sm py-1 px-2 hover:bg-green-600 bg-gray-800 rounded-md text-white"
               >
                 {buttonText}
               </button>
-              <div className="text-left">
+              {/* <div className="text-left">
                 {showSuccessMessage && (
                   <p className="text-green-500 font-semibold text-[10px] my-2">
                     Thankyou! Your Code has been delivered for confirmation.{" "}
@@ -234,7 +178,7 @@ const ProductDetails = ({ product, products }) => {
                     Oops! Something went wrong, please try again.
                   </p>
                 )}
-              </div>
+              </div> */}
             </form>
           </div>
         )}
